@@ -10,10 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Param } from '@nestjs/common';
 let ProfilesController = class ProfilesController {
     fetchAll(age) {
         return [{ age }];
+    }
+    fetchOne(id) {
+        return { id };
     }
 };
 __decorate([
@@ -23,6 +26,13 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProfilesController.prototype, "fetchAll", null);
+__decorate([
+    Get(':id'),
+    __param(0, Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProfilesController.prototype, "fetchOne", null);
 ProfilesController = __decorate([
     Controller('profiles')
 ], ProfilesController);

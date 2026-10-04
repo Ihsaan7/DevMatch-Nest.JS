@@ -19,24 +19,23 @@ export class ProfilesController {
   }
 
   @Post()
-  create(@Body() createProfileDto: CreateProfileDto) {
-    return {
-      name: createProfileDto.name,
-      description: createProfileDto.description,
-    };
+  create(@Body() body: { name: string; description: string}) {
+    return this.profileService.create(body)
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateProfileDto: UpdateProfileDto) {
-    return {
-      id: id,
-      ...updateProfileDto,
-    };
+  update(
+    @Param('id') id: string, 
+    @Body() body: UpdateProfileDto
+      ) 
+  {
+    return this.profileService.update(id , body)
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id:string)
   {}
+
 
 }

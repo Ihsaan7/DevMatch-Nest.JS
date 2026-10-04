@@ -1,4 +1,3 @@
-import { CreateProfileDto } from './dto/create-profile.dto.js';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
 import { ProfilesService } from './profiles.service.js';
 export declare class ProfilesController {
@@ -14,14 +13,18 @@ export declare class ProfilesController {
         name: string;
         description: string;
     } | undefined;
-    create(createProfileDto: CreateProfileDto): {
+    create(body: {
         name: string;
         description: string;
-    };
-    update(id: string, updateProfileDto: UpdateProfileDto): {
+    }): {
         name: string;
         description: string;
-        id: string;
+        id: `${string}-${string}-${string}-${string}-${string}`;
     };
+    update(id: string, body: UpdateProfileDto): {
+        id: `${string}-${string}-${string}-${string}-${string}`;
+        name: string;
+        description: string;
+    } | undefined;
     remove(id: string): void;
 }

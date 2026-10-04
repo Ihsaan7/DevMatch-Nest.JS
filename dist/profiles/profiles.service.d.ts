@@ -1,3 +1,5 @@
+import { CreateProfileDto } from './dto/create-profile.dto.js';
+import { UpdateProfileDto } from './dto/update-profile.dto.js';
 export declare class ProfilesService {
     private profiles;
     fetchAll(): {
@@ -6,6 +8,16 @@ export declare class ProfilesService {
         description: string;
     }[];
     findOne(id: string): {
+        id: `${string}-${string}-${string}-${string}-${string}`;
+        name: string;
+        description: string;
+    } | undefined;
+    create(createProfileDto: CreateProfileDto): {
+        name: string;
+        description: string;
+        id: `${string}-${string}-${string}-${string}-${string}`;
+    };
+    update(id: string, updateProfileDto: UpdateProfileDto): {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;

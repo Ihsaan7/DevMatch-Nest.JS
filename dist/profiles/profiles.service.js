@@ -31,6 +31,22 @@ let ProfilesService = class ProfilesService {
         const profile = this.profiles.find(p => p.id === id);
         return profile;
     }
+    create(createProfileDto) {
+        const createdProfile = {
+            id: randomUUID(),
+            ...createProfileDto
+        };
+        this.profiles.push(createdProfile);
+        return createdProfile;
+    }
+    update(id, updateProfileDto) {
+        const profile = this.profiles.find(p => p.id === id);
+        if (profile) {
+            profile.name = updateProfileDto.name,
+                profile.description = updateProfileDto.description;
+            return profile;
+        }
+    }
 };
 ProfilesService = __decorate([
     Injectable()

@@ -11,7 +11,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 import { Controller, Get, Param, Post, Body, Put, Delete, HttpCode, HttpStatus } from '@nestjs/common';
-import { CreateProfileDto } from './dto/create-profile.dto.js';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
 import { ProfilesService } from './profiles.service.js';
 let ProfilesController = class ProfilesController {
@@ -25,17 +24,11 @@ let ProfilesController = class ProfilesController {
     fetchOne(id) {
         return this.profileService.findOne(id);
     }
-    create(createProfileDto) {
-        return {
-            name: createProfileDto.name,
-            description: createProfileDto.description,
-        };
+    create(body) {
+        return this.profileService.create(body);
     }
-    update(id, updateProfileDto) {
-        return {
-            id: id,
-            ...updateProfileDto,
-        };
+    update(id, body) {
+        return this.profileService.update(id, body);
     }
     remove(id) { }
 };
@@ -56,7 +49,7 @@ __decorate([
     Post(),
     __param(0, Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [CreateProfileDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], ProfilesController.prototype, "create", null);
 __decorate([

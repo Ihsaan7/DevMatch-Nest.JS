@@ -27,6 +27,10 @@ let ProfilesService = class ProfilesService {
     fetchAll() {
         return this.profiles;
     }
+    findOne(id) {
+        const profile = this.profiles.find(p => p.id === id);
+        return profile;
+    }
 };
 ProfilesService = __decorate([
     Injectable()

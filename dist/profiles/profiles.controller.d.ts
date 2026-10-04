@@ -10,8 +10,10 @@ export declare class ProfilesController {
         description: string;
     }[];
     fetchOne(id: string): {
-        id: string;
-    };
+        id: `${string}-${string}-${string}-${string}-${string}`;
+        name: string;
+        description: string;
+    } | undefined;
     create(createProfileDto: CreateProfileDto): {
         name: string;
         description: string;

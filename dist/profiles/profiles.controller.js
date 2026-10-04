@@ -23,7 +23,7 @@ let ProfilesController = class ProfilesController {
         return this.profileService.fetchAll();
     }
     fetchOne(id) {
-        return { id };
+        return this.profileService.findOne(id);
     }
     create(createProfileDto) {
         return {

@@ -15,7 +15,7 @@ export class ProfilesController {
 
   @Get(':id')
   fetchOne(@Param('id') id: string) {
-    return { id };
+    return this.profileService.findOne(id);
   }
 
   @Post()

@@ -26,4 +26,10 @@ export class ProfilesService {
     return this.profiles
   }
 
+  findOne(id:string)
+  {
+    const profile = this.profiles.find(p=> p.id === id)
+    return profile
+  }
+
 }

@@ -1,8 +1,13 @@
 import { CreateProfileDto } from './dto/create-profile.dto.js';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
+import { ProfilesService } from './profiles.service.js';
 export declare class ProfilesController {
-    fetchAll(age: number): {
-        age: number;
+    private readonly profileService;
+    constructor(profileService: ProfilesService);
+    fetchAll(): {
+        id: `${string}-${string}-${string}-${string}-${string}`;
+        name: string;
+        description: string;
     }[];
     fetchOne(id: string): {
         id: string;

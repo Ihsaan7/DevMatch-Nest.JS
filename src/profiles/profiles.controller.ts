@@ -1,12 +1,16 @@
 import { Controller, Get, Query, Param, Post, Body, Put , Delete , HttpCode , HttpStatus } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto.js';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
+import { ProfilesService } from './profiles.service.js';
 
 @Controller('profiles')
 export class ProfilesController {
+  constructor(private readonly profileService : ProfilesService){}
+
+
   @Get()
-  fetchAll(@Query('age') age: number) {
-    return [{ age }];
+  fetchAll() {
+    return this.profileService.fetchAll();
   }
 
   @Get(':id')

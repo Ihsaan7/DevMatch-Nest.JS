@@ -1,7 +1,8 @@
-import { Controller, Get, Query, Param, Post, Body, Put , Delete , HttpCode , HttpStatus } from '@nestjs/common';
+import { Controller, Get, Query, Param, Post, Body, Put , Delete , HttpCode , HttpStatus , ParseUUIDPipe} from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto.js';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
 import { ProfilesService } from './profiles.service.js';
+import type { UUID } from 'crypto';
 
 @Controller('profiles')
 export class ProfilesController {
@@ -14,7 +15,7 @@ export class ProfilesController {
   }
 
   @Get(':id')
-  fetchOne(@Param('id') id: string) {
+  fetchOne(@Param('id', ParseUUIDPipe) id: UUID) {
     return this.profileService.findOne(id);
   }
 
@@ -25,7 +26,7 @@ export class ProfilesController {
 
   @Put(':id')
   update(
-    @Param('id') id: string, 
+    @Param('id', ParseUUIDPipe) id: UUID, 
     @Body() body: UpdateProfileDto
       ) 
   {
@@ -34,7 +35,7 @@ export class ProfilesController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id:string)
+  remove(@Param('id', ParseUUIDPipe) id:UUID)
   {
     return this.profileService.remove(id)
   }

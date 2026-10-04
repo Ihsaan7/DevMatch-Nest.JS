@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Get, Param, Post, Body, Put, Delete, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Put, Delete, HttpCode, HttpStatus, ParseUUIDPipe } from '@nestjs/common';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
 import { ProfilesService } from './profiles.service.js';
 let ProfilesController = class ProfilesController {
@@ -42,7 +42,7 @@ __decorate([
 ], ProfilesController.prototype, "fetchAll", null);
 __decorate([
     Get(':id'),
-    __param(0, Param('id')),
+    __param(0, Param('id', ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
@@ -56,7 +56,7 @@ __decorate([
 ], ProfilesController.prototype, "create", null);
 __decorate([
     Put(':id'),
-    __param(0, Param('id')),
+    __param(0, Param('id', ParseUUIDPipe)),
     __param(1, Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, UpdateProfileDto]),
@@ -65,7 +65,7 @@ __decorate([
 __decorate([
     Delete(':id'),
     HttpCode(HttpStatus.NO_CONTENT),
-    __param(0, Param('id')),
+    __param(0, Param('id', ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)

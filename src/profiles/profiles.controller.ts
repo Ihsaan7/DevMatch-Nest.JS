@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Param, Post, Body, Put , Delete , HttpCode , HttpStatus , ParseUUIDPipe} from '@nestjs/common';
+import { Controller, Get, Query, Param, Post, Body, Put , Delete , HttpCode , HttpStatus, ValidationPipe , ParseUUIDPipe} from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto.js';
 import { UpdateProfileDto } from './dto/update-profile.dto.js';
 import { ProfilesService } from './profiles.service.js';
@@ -20,14 +20,14 @@ export class ProfilesController {
   }
 
   @Post()
-  create(@Body() body: { name: string; description: string}) {
+  create(@Body(new ValidationPipe()) body: { name: string; description: string}) {
     return this.profileService.create(body)
   }
 
   @Put(':id')
   update(
     @Param('id', ParseUUIDPipe) id: UUID, 
-    @Body() body: UpdateProfileDto
+    @Body(new ValidationPipe()) body: UpdateProfileDto
       ) 
   {
     return this.profileService.update(id , body)

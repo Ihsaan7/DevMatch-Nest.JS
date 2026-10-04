@@ -26,5 +26,12 @@ export declare class ProfilesController {
         name: string;
         description: string;
     } | undefined;
-    remove(id: string): void;
+    remove(id: string): {
+        message: string;
+        removed: {
+            id: `${string}-${string}-${string}-${string}-${string}`;
+            name: string;
+            description: string;
+        } | undefined;
+    };
 }

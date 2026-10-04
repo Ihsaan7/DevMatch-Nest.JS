@@ -58,4 +58,11 @@ export class ProfilesService {
 
   }
 
+  remove(id:string)
+  {
+    const profile = this.profiles.find(p=> p.id === id)
+    this.profiles.filter(p => p.id ! === id)
+    return{ message:"Profile removed!" , removed: profile}
+  }
+
 }

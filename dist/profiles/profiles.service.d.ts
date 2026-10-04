@@ -22,4 +22,12 @@ export declare class ProfilesService {
         name: string;
         description: string;
     } | undefined;
+    remove(id: string): {
+        message: string;
+        removed: {
+            id: `${string}-${string}-${string}-${string}-${string}`;
+            name: string;
+            description: string;
+        } | undefined;
+    };
 }

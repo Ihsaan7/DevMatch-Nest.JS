@@ -47,6 +47,11 @@ let ProfilesService = class ProfilesService {
             return profile;
         }
     }
+    remove(id) {
+        const profile = this.profiles.find(p => p.id === id);
+        this.profiles.filter(p => p.id === id);
+        return { message: "Profile removed!", removed: profile };
+    }
 };
 ProfilesService = __decorate([
     Injectable()

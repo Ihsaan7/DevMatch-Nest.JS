@@ -30,7 +30,9 @@ let ProfilesController = class ProfilesController {
     update(id, body) {
         return this.profileService.update(id, body);
     }
-    remove(id) { }
+    remove(id) {
+        return this.profileService.remove(id);
+    }
 };
 __decorate([
     Get(),

@@ -10,8 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Query, Param, Post, Body, Put } from '@nestjs/common';
 import { CreateProfileDto } from './dto/create-profile.dto.js';
+import { UpdateProfileDto } from './dto/update-profile.dto.js';
 let ProfilesController = class ProfilesController {
     fetchAll(age) {
         return [{ age }];
@@ -23,6 +24,13 @@ let ProfilesController = class ProfilesController {
         return {
             name: createProfileDto.name,
             description: createProfileDto.description
+        };
+    }
+    update(id, updateProfileDto) {
+        return {
+            id: id,
+            name: updateProfileDto.name,
+            description: updateProfileDto.description
         };
     }
 };
@@ -47,6 +55,14 @@ __decorate([
     __metadata("design:paramtypes", [CreateProfileDto]),
     __metadata("design:returntype", void 0)
 ], ProfilesController.prototype, "create", null);
+__decorate([
+    Put(':id'),
+    __param(0, Param('id')),
+    __param(1, Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, UpdateProfileDto]),
+    __metadata("design:returntype", void 0)
+], ProfilesController.prototype, "update", null);
 ProfilesController = __decorate([
     Controller('profiles')
 ], ProfilesController);

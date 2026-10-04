@@ -1,4 +1,5 @@
 import { CreateProfileDto } from './dto/create-profile.dto.js';
+import { UpdateProfileDto } from './dto/update-profile.dto.js';
 export declare class ProfilesController {
     fetchAll(age: number): {
         age: number;
@@ -7,6 +8,11 @@ export declare class ProfilesController {
         id: string;
     };
     create(createProfileDto: CreateProfileDto): {
+        name: string;
+        description: string;
+    };
+    update(id: string, updateProfileDto: UpdateProfileDto): {
+        id: string;
         name: string;
         description: string;
     };

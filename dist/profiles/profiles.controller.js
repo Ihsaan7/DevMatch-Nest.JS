@@ -29,8 +29,7 @@ let ProfilesController = class ProfilesController {
     update(id, updateProfileDto) {
         return {
             id: id,
-            name: updateProfileDto.name,
-            description: updateProfileDto.description
+            ...updateProfileDto
         };
     }
 };

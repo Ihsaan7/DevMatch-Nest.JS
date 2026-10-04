@@ -12,8 +12,8 @@ export declare class ProfilesController {
         description: string;
     };
     update(id: string, updateProfileDto: UpdateProfileDto): {
-        id: string;
         name: string;
         description: string;
+        id: string;
     };
 }

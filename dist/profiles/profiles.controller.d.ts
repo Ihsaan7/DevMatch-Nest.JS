@@ -12,7 +12,7 @@ export declare class ProfilesController {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
-    } | undefined;
+    };
     create(body: {
         name: string;
         description: string;
@@ -25,13 +25,13 @@ export declare class ProfilesController {
         id: `${string}-${string}-${string}-${string}-${string}`;
         name: string;
         description: string;
-    } | undefined;
+    };
     remove(id: string): {
         message: string;
         removed: {
             id: `${string}-${string}-${string}-${string}-${string}`;
             name: string;
             description: string;
-        } | undefined;
+        };
     };
 }

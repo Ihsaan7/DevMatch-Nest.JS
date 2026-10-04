@@ -4,7 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 let ProfilesService = class ProfilesService {
     profiles = [
@@ -29,6 +29,8 @@ let ProfilesService = class ProfilesService {
     }
     findOne(id) {
         const profile = this.profiles.find(p => p.id === id);
+        if (!profile)
+            throw new NotFoundException('No profile found!');
         return profile;
     }
     create(createProfileDto) {
@@ -46,9 +48,12 @@ let ProfilesService = class ProfilesService {
                 profile.description = updateProfileDto.description;
             return profile;
         }
+        throw new NotFoundException('No profile added!');
     }
     remove(id) {
         const profile = this.profiles.find(p => p.id === id);
+        if (!profile)
+            throw new NotFoundException('No profile found!');
         this.profiles.filter(p => p.id === id);
         return { message: "Profile removed!", removed: profile };
     }

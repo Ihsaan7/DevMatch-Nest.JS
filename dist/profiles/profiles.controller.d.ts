@@ -16,4 +16,5 @@ export declare class ProfilesController {
         description: string;
         id: string;
     };
+    remove(id: string): void;
 }

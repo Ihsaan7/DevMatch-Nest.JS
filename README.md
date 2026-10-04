@@ -44,6 +44,19 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Test the API in VS Code
+
+This project includes the official NestJS Devtools integration. It provides a
+dashboard with a Runner/Network-style interface for testing the running NestJS app.
+
+1. Start the API with `npm run start:dev`.
+2. Open the NestJS Devtools dashboard at [devtools.nestjs.com](https://devtools.nestjs.com).
+3. Connect it to the local Devtools server, which runs on port `8000` by default.
+4. Use its request runner with `GET http://localhost:3000` to view the response.
+
+The application API port defaults to `3000` and can be changed with the `PORT`
+environment variable. Devtools is enabled only when `NODE_ENV` is not `production`.
+
 ## Run tests
 
 ```bash

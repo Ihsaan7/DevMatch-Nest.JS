@@ -1,3 +1,5 @@
 export declare class ProfilesController {
-    fetchAll(): never[];
+    fetchAll(age: number): {
+        age: number;
+    }[];
 }

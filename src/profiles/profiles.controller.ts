@@ -1,11 +1,11 @@
-import { Controller , Get } from '@nestjs/common';
+import { Controller , Get , Query} from '@nestjs/common';
 
 @Controller('profiles')
 export class ProfilesController {
 
     @Get()
-    fetchAll()
+    fetchAll(@Query('age') age: number)
     {
-        return [];
+        return [{ age }];
     }
 }
